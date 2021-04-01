@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(Auth::check()) {
+        return redirect()->route('home');
+    }
+    return redirect()->route('login');
 });
 
 Auth::routes();
